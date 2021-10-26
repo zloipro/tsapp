@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/tsapp/static/css/main.45e12106.chunk.css",
+    "main.js": "/tsapp/static/js/main.41dfa4ec.chunk.js",
+    "main.js.map": "/tsapp/static/js/main.41dfa4ec.chunk.js.map",
+    "runtime-main.js": "/tsapp/static/js/runtime-main.c0b0b825.js",
+    "runtime-main.js.map": "/tsapp/static/js/runtime-main.c0b0b825.js.map",
+    "static/css/2.3d0626f2.chunk.css": "/tsapp/static/css/2.3d0626f2.chunk.css",
+    "static/js/2.2258b605.chunk.js": "/tsapp/static/js/2.2258b605.chunk.js",
+    "static/js/2.2258b605.chunk.js.map": "/tsapp/static/js/2.2258b605.chunk.js.map",
+    "static/js/3.780abf46.chunk.js": "/tsapp/static/js/3.780abf46.chunk.js",
+    "static/js/3.780abf46.chunk.js.map": "/tsapp/static/js/3.780abf46.chunk.js.map",
+    "index.html": "/tsapp/index.html",
+    "static/css/2.3d0626f2.chunk.css.map": "/tsapp/static/css/2.3d0626f2.chunk.css.map",
+    "static/css/main.45e12106.chunk.css.map": "/tsapp/static/css/main.45e12106.chunk.css.map",
+    "static/js/2.2258b605.chunk.js.LICENSE.txt": "/tsapp/static/js/2.2258b605.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/tsapp/static/media/outline-icons.ddae9b1b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c0b0b825.js",
+    "static/css/2.3d0626f2.chunk.css",
+    "static/js/2.2258b605.chunk.js",
+    "static/css/main.45e12106.chunk.css",
+    "static/js/main.41dfa4ec.chunk.js"
+  ]
+}
