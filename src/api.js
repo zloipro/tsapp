@@ -11,8 +11,9 @@ const moment = extendMoment(Moment);
 const API_BUCKET_BANNER = 'https://admin.trafficstars.com/media/';
 const API_DEFAULT_SIZE = 200;
 const API_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': '*',
+  // 'Access-Control-Allow-Origin': '*',
+  // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+  // 'Access-Control-Allow-Headers': 'Content-Type',
   'Content-Type': 'application/json',
 };
 
@@ -404,8 +405,9 @@ async function pauseCreative(token, id) {
 }
 
 async function getConversions(apiKey, affiliateId, dateFrom, dateTo) {
-  const response = await axios.get(`https://partners.clickdealer.com/affiliates/api/1/reports.asmx/Conversions?api_key=${apiKey}&affiliate_id=142387&start_date=10%2F24%2F2021%2000%3A00%3A00&end_date=10%2F25%2F2021%2023%3A59%3A59&include_tests=False&row_limit=100&currency_id=All&disposition_type=All&conversion_type=All&update_filter=False`, {
-    responseType: 'json',
+  const response = await axios(`https://partners.clickdealer.com/affiliates/api/1/reports.asmx/Conversions?api_key=${apiKey}&affiliate_id=142387&start_date=10%2F24%2F2021%2000%3A00%3A00&end_date=10%2F25%2F2021%2023%3A59%3A59&include_tests=False&row_limit=100&currency_id=All&disposition_type=All&conversion_type=All&update_filter=False`, {
+    // responseType: 'json',
+    method: 'GET',
     headers: {
       ...API_HEADERS,
     },
@@ -414,6 +416,7 @@ async function getConversions(apiKey, affiliateId, dateFrom, dateTo) {
     //   date_to:      dateFrom,
     // },
     // changeOrigin: true,
+    mode: 'no-cors',
     crossdomain: true,
   });
   console.log(response);
