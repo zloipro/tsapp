@@ -405,7 +405,7 @@ async function pauseCreative(token, id) {
 }
 
 async function getConversions(apiKey, affiliateId, dateFrom, dateTo) {
-  const response = await axios(`https://partners.clickdealer.com/affiliates/api/1/reports.asmx/Conversions?api_key=${apiKey}&affiliate_id=142387&start_date=10%2F24%2F2021%2000%3A00%3A00&end_date=10%2F25%2F2021%2023%3A59%3A59&include_tests=False&row_limit=100&currency_id=All&disposition_type=All&conversion_type=All&update_filter=False`, {
+  const response = await axios(`https://smartlink.clickdealer.com/affiliates/api/1/reports.asmx/Conversions?api_key=${apiKey}&affiliate_id=142387&start_date=10%2F24%2F2021%2000%3A00%3A00&end_date=10%2F25%2F2021%2023%3A59%3A59&include_tests=False&row_limit=100&currency_id=All&disposition_type=All&conversion_type=All&update_filter=False`, {
     // responseType: 'json',
     method: 'GET',
     headers: {

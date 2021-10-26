@@ -4,13 +4,13 @@ import round from 'lodash/round';
 import store from 'store';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-import { Container, Segment, Button, Menu, Checkbox, Modal, Form, Input, Icon } from 'semantic-ui-react';
+import { Container, Segment, Button, Menu, Checkbox, Modal, Form, Input, Icon, Tab } from 'semantic-ui-react';
 import { DATE_FORMAT }  from '../../utils';
 import api  from '../../api';
 import './style.scss';
 import Campaigns from '../Campaigns';
 import Banners from '../Banners';
-import Conversions from '../Conversions';
+// import Conversions from '../Conversions';
 const moment = extendMoment(Moment);
 
 
@@ -118,7 +118,7 @@ function App() {
         <Menu.Menu position='right'>
           <Menu.Item disabled={loading} active={viewSelect === 'campaigns'} onClick={() => inViewSelect('campaigns')}><Icon name='suitcase'/>Campaigns</Menu.Item>
           <Menu.Item disabled={loading} active={viewSelect === 'banners'} onClick={() => inViewSelect('banners')}><Icon name='picture'/>Banners</Menu.Item>
-          <Menu.Item disabled={loading} active={viewSelect === 'conversions'} onClick={() => inViewSelect('conversions')}><Icon name='dollar'/>Conversions</Menu.Item>
+          {/* <Menu.Item disabled={loading} active={viewSelect === 'conversions'} onClick={() => inViewSelect('conversions')}><Icon name='dollar'/>Conversions</Menu.Item> */}
         </Menu.Menu>
       </Menu>
 
@@ -135,9 +135,9 @@ function App() {
         {(viewSelect === 'banners') && (
           <Banners switchStamp={switchStamp} auth={auth} dates={dates} setDates={setDates} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
         )}
-        {(viewSelect === 'conversions') && (
+        {/* {(viewSelect === 'conversions') && (
           <Conversions switchStamp={switchStamp} auth={auth} dates={dates} setDates={setDates} searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-        )}
+        )} */}
 
       </Container>
 
@@ -148,27 +148,42 @@ function App() {
             <Button onClick={() => setAuthError(null)} floated='right' color='red' icon='close' size='tiny' style={{ marginTop: '-6px' }}/>
             <p>{authError}</p>
           </Segment>}
+          <Tab panes={[
+            { menuItem: 'TrafficStars', render: () => (
+              <Tab.Pane>
+                <Form>
+                  <Form.Field>
+                    <label>Client ID</label>
+                    <Input placeholder='TS client ID' value={auth.clientId || ''} onChange={v => setAuth({ ...auth, clientId: v.target.value  })} />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Client Secret</label>
+                    <Input placeholder='TS client Secret' value={auth.clientSecret || ''} onChange={v => setAuth({ ...auth, clientSecret: v.target.value  })} />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Login</label>
+                    <Input placeholder='Login' value={auth.login || ''} onChange={v => setAuth({ ...auth, login: v.target.value  })} />
+                  </Form.Field>
+                  <Form.Field>
+                    <label>Password</label>
+                    <Input type='password' placeholder='Password' value={auth.password || ''} onChange={v => setAuth({ ...auth, password: v.target.value  })} />
+                  </Form.Field>
+                </Form>
+              </Tab.Pane>
+            )},
+            { menuItem: 'ClickDealer', disabled: true, render: () => (
+              <Tab.Pane>
+                <Form>
+                  <Form.Field>
+                    <label>Api Key</label>
+                    <Input placeholder='CD api Key' disabled value={auth.apiKey || ''} onChange={v => setAuth({ ...auth, apiKey: v.target.value  })} />
+                  </Form.Field>
+                </Form>
+              </Tab.Pane>
+            )},
+          ]}/>
+          <br/>
           <Form>
-            <Form.Field>
-              <label>TS client ID</label>
-              <Input placeholder='TS client ID' value={auth.clientId || ''} onChange={v => setAuth({ ...auth, clientId: v.target.value  })} />
-            </Form.Field>
-            <Form.Field>
-              <label>TS client Secret</label>
-              <Input placeholder='TS client Secret' value={auth.clientSecret || ''} onChange={v => setAuth({ ...auth, clientSecret: v.target.value  })} />
-            </Form.Field>
-            <Form.Field>
-              <label>CD api Key</label>
-              <Input placeholder='CD api Key' value={auth.apiKey || ''} onChange={v => setAuth({ ...auth, apiKey: v.target.value  })} />
-            </Form.Field>
-            <Form.Field>
-              <label>Login</label>
-              <Input placeholder='Login' value={auth.login || ''} onChange={v => setAuth({ ...auth, login: v.target.value  })} />
-            </Form.Field>
-            <Form.Field>
-              <label>Password</label>
-              <Input type='password' placeholder='Password' value={auth.password || ''} onChange={v => setAuth({ ...auth, password: v.target.value  })} />
-            </Form.Field>
             <Form.Field>
               <Checkbox checked={!!useLocalStore} onChange={() => setUseLocalStore(!useLocalStore)} label='Save credentials in local storage' />
             </Form.Field>
